@@ -1,3 +1,4 @@
+import javax.swing.ListCellRenderer;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -9,17 +10,17 @@ import java.util.List;
 
 public class XMLReader
 {
-  static int check = 0;
+  static int check = 0; 
   static boolean value;
-  public static void main(String[] args) {
-    readXml("../clients.xml");
-  }
-    static void readXml(String filename)
+  
+    static List<Client> readXml(String filename)
     {
+      List<Client> listClients = new ArrayList<>();
         try
         {
             FileInputStream file = new FileInputStream(filename);
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(file);
+           
             while(reader.hasNext())
             {
               if(check < 3)
@@ -35,8 +36,9 @@ public class XMLReader
                     {
 
                         Client c = readClient(reader);
-                        System.out.println("CLient id : "+c.id);
-                        System.out.println("==============================================================================================");
+                        listClients.add(c);
+                        // System.out.println("CLient id : "+c.id);
+                        // System.out.println("==============================================================================================");
 
                     }
 
@@ -52,6 +54,7 @@ public class XMLReader
         {
             e.printStackTrace();
         }
+        return listClients;
     }
     static Client readClient(XMLStreamReader reader) throws XMLStreamException
     {
@@ -67,11 +70,11 @@ public class XMLReader
             if(reader.getName().toString()=="planche")
             {
               Planche p = readPlanche(reader);
-              System.out.println("planche id " + p.id);
-              System.out.println("planche nombre "+p.nombre);
-              System.out.println("planche date  "+ p.date);
-              System.out.println("planche price  "+p.price);
-              System.out.println("============================");
+              // System.out.println("planche id " + p.id);
+              // System.out.println("planche nombre "+p.nombre);
+              // System.out.println("planche date  "+ p.date);
+              // System.out.println("planche price  "+p.price);
+              // System.out.println("============================");
               listPlanche.add(p);
               continue;
 
@@ -103,9 +106,10 @@ public class XMLReader
             if(reader.getName().toString() == "dim")
             {
             Dimension d = readDimension(reader);
-            System.out.println("dimension l " +d.l);
-            System.out.println("dimension L "+d.L);
-            System.out.println("============================");
+            listDimension.add(d);
+            // System.out.println("dimension l " +d.l);
+            // System.out.println("dimension L "+d.L);
+            // System.out.println("============================");
              break;
           }
 
@@ -115,7 +119,7 @@ public class XMLReader
       }
 
 
-        return new Planche(id,nombre,date,price);
+        return new Planche(id,nombre,date,price,listDimension);
     }
     static Dimension readDimension(XMLStreamReader reader) throws XMLStreamException
     {
