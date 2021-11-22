@@ -4,7 +4,7 @@ public interface Validate {
     boolean isDimension(Dimension dim);
     boolean isId(int id);
     boolean isNumber(int number);
-    // boolean isPos(double x, double y);
+    boolean isPos(double x, double y);
 
 
 }

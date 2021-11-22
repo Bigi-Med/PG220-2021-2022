@@ -1,6 +1,9 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import jdk.nashorn.internal.objects.annotations.Optimistic;
+
 import java.lang.String;
 import java.text.Format;
 public  class Wood  implements Validate
@@ -80,6 +83,11 @@ public  class Wood  implements Validate
   {
       return false;
   }
+ }
+ @Override
+ public boolean isPos(double x, double y)
+ {
+     return true;
  }
 
 }

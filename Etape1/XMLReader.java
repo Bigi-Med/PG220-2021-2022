@@ -76,24 +76,56 @@ public class XMLReader
           {
             if(reader.getName().toString() == "client")
             {
-              
+              try{
               idClient = Integer.parseInt(reader.getAttributeValue(0));
+              }
+              catch(Exception e){
+                idClient = -69;
+              }
+              try{
               planche = Integer.parseInt(reader.getAttributeValue(1));
+              }
+              catch(Exception e)
+              {
+                planche = -69;
+              }
               continue;
             }
             
              if(reader.getName().toString() == "fournisseur")
             {
-             
+             try{
               idSupplier = Integer.parseInt(reader.getAttributeValue(0));
+             }
+             catch(Exception e)
+             {
+               idSupplier = -69;
+             }
+             try{
               panneau = Integer.parseInt(reader.getAttributeValue(1));
+             }
+             catch(Exception e)
+             {
+               panneau = -69;
+             }
               continue;
             }
            if(reader.getName().toString() == "position")
             {
-              
+              try{
               x = Double.parseDouble(reader.getAttributeValue(0));
+              }
+              catch(Exception e)
+              {
+                x = -69;
+              }
+              try{
               y = Double.parseDouble(reader.getAttributeValue(1));
+              }
+              catch(Exception e)
+              {
+                y = -69;
+              }
               Cut c = new Cut(idClient,idSupplier,planche,panneau,x,y);
               listCut.add(c);
             }
@@ -112,15 +144,7 @@ public class XMLReader
         {
             e.printStackTrace();
         }
-      //   catch(Exception e)
-      //   {
-      //      idClient = 1;
-      //  idSupplier = 1;
-      //  planche = 1;
-      //  panneau = 1;
-      //  x = 1;
-      //  y = 1;
-      //   }
+      
         return listCut;
     }
     static User readUser(XMLStreamReader reader) throws XMLStreamException

@@ -73,6 +73,36 @@ public class test {
       for(Cut c : listCut)
        {
          System.out.println("Cut has client id " + c.idClient + " and planche id " + c.idPlanche + " fournisseurs id " + c.idSupplier + " panel id " + c.idPanel + " positions x " + c.positionX + " position y " + c.positionY);
+         if(c.isId(c.idClient) && c.isId(c.idPlanche) && c.isPos(c.positionX, c.positionY) && c.isId(c.idPlanche) && c.isId(c.idPanel))
+         {
+           System.out.println("CHECK OK");
+           System.out.println("");
+          }
+         if(c.isId(c.idClient) == false)
+         {
+           System.out.println("client id invalid !");
+           System.out.println("");
+          }
+         if(c.isId(c.idSupplier) == false)
+         {
+           System.out.println("supplier id invalid");
+           System.out.println("");
+          }
+         if(c.isId(c.idPlanche) == false)
+         {
+           System.out.println("planche id invalid !");
+           System.out.println("");
+          }
+         if(c.isId(c.idPanel) == false)
+         {
+           System.out.println("panel id invalid !");
+           System.out.println("");
+            }
+         if(c.isPos(c.positionX, c.positionY) == false)
+         {
+           System.out.println("Position invalid !");
+           System.out.println("");
+          }
          System.out.println("");
         }
 
