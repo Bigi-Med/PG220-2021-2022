@@ -1,3 +1,4 @@
+import java.util.Locale;
 public class Cut implements Validate
 {
     int idClient;
@@ -43,7 +44,7 @@ public class Cut implements Validate
         return true;
     }
     @Override
-    public boolean isDate(String date)
+    public boolean isDate(String format, String value, Locale locale)
     {
         return true;
     }
