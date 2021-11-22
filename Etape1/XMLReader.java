@@ -12,18 +12,17 @@ import java.lang.Exception;
 
 public class XMLReader
 {
-  static int check = 0; 
+  static int check = 0;
   static boolean value;
-  
+
     static List<User> readXml(String filename )
     {
-      
-        List<User> listUser = new ArrayList<>();
+        List listUser = new ArrayList<>();
       try
         {
             FileInputStream file = new FileInputStream(filename);
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(file);
-           
+
             while(reader.hasNext())
             {
               if(check < 3)
@@ -37,7 +36,7 @@ public class XMLReader
 
                     if(reader.getName().toString() == "client" || reader.getName().toString() == "fournisseur" )
                     {
-                       
+
                         User u = readUser(reader);
                         listUser.add(u);
                     }
@@ -54,7 +53,7 @@ public class XMLReader
         {
             e.printStackTrace();
         }
-       
+
         return listUser;
     }
     static List<Cut> readXMLcut(String filename)
@@ -91,7 +90,7 @@ public class XMLReader
               }
               continue;
             }
-            
+
              if(reader.getName().toString() == "fournisseur")
             {
              try{
@@ -129,7 +128,7 @@ public class XMLReader
               Cut c = new Cut(idClient,idSupplier,planche,panneau,x,y);
               listCut.add(c);
             }
-           
+
           }
           else{
             continue;
@@ -144,12 +143,12 @@ public class XMLReader
         {
             e.printStackTrace();
         }
-      
+
         return listCut;
     }
     static User readUser(XMLStreamReader reader) throws XMLStreamException
     {
-        
+
         int id;
         try{
          id = Integer.parseInt(reader.getAttributeValue(0));
@@ -157,9 +156,9 @@ public class XMLReader
         catch(Exception e){
            id  = -69;
         }
-        
-        
-          List<Wood> listWood = new ArrayList<>();
+
+
+            List listWood = new ArrayList<>();
         while(reader.hasNext())
         {
           if(reader.next() != XMLStreamConstants.START_ELEMENT )
@@ -168,9 +167,10 @@ public class XMLReader
             }
             if(reader.getName().toString()=="planche" || reader.getName().toString() == "panneau")
             {
-              
+
               Wood w = readWoodType(reader);
-              listWood.add(w);
+              Planche p = (Planche)w;
+              listWood.add(p);
               continue;
 
             }
@@ -182,8 +182,8 @@ public class XMLReader
 
         }
 
-       
-        return new User(id,listWood);
+        // list<Planche> list = (list<Planche>)listWood;
+        return new Client(id,listWood);
     }
 
     static Wood readWoodType(XMLStreamReader reader) throws XMLStreamException
@@ -235,8 +235,8 @@ public class XMLReader
       }
 
 
-       
-          return new Wood(id,nombre,date,price,listDimension);
+
+          return new Planche(id,nombre,date,price,listDimension);
       }
     static Dimension readDimension(XMLStreamReader reader) throws XMLStreamException
     {
