@@ -1,8 +1,15 @@
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.lang.String;
 import java.text.Format;
+
 public  class Wood  implements Validate
 {
   int id;
@@ -32,19 +39,33 @@ public  class Wood  implements Validate
       }
   }
    @Override
-  public  boolean isDate(String date)
-  {
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-      Date d = new Date();
-      String t = sdf.format(d);
-      if(t.compareTo(date) == 0)
-      {
-          return true;
-      }
-      else{
-        return false;
-      }
-  }
+   public boolean isDate(String format, String value, Locale locale) {
+    LocalDateTime ldt = null;
+    DateTimeFormatter fomatter = DateTimeFormatter.ofPattern(format, locale);
+
+    try {
+        ldt = LocalDateTime.parse(value, fomatter);
+        String result = ldt.format(fomatter);
+        return result.equals(value);
+    } catch (DateTimeParseException e) {
+        try {
+            LocalDate ld = LocalDate.parse(value, fomatter);
+            String result = ld.format(fomatter);
+            return result.equals(value);
+        } catch (DateTimeParseException exp) {
+            try {
+                LocalTime lt = LocalTime.parse(value, fomatter);
+                String result = lt.format(fomatter);
+                return result.equals(value);
+            } catch (DateTimeParseException e2) {
+                // Debugging purposes
+                //e2.printStackTrace();
+            }
+        }
+    }
+
+    return false;
+    }
   @Override
   public boolean isDimension(Dimension dim)
   {

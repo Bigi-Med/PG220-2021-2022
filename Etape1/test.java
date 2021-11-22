@@ -2,6 +2,7 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class test {
     public static void main(String[] args) {// 0 : client / 1 : fournisseur
@@ -35,7 +36,7 @@ public class test {
               System.out.println("");
               
               
-              if((w.isPrice(w.price)) && (w.isDimension(d)) && (w.isId(w.id)) && (w.isNumber(w.nombre) && w.isDate(w.date)))
+              if((w.isPrice(w.price)) && (w.isDimension(d)) && (w.isId(w.id)) && (w.isNumber(w.nombre) && w.isDate("dd.MM.yy",w.date,Locale.ENGLISH)))
               {
                 System.out.println(" CHECK OK");
                 System.out.println("");
@@ -58,7 +59,7 @@ public class test {
                 System.out.println("NOMBRE INVALID !");
                 System.out.println("");
               }
-              if(w.isDate(w.date) == false)
+              if(w.isDate("dd.MM.yy",w.date,Locale.ENGLISH) == false)
               {
                 System.out.println("DATE INVALID !");
                 System.out.println("");
