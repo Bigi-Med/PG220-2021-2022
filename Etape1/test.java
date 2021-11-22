@@ -1,9 +1,11 @@
+
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class test {
     public static void main(String[] args) {// 0 : client / 1 : fournisseur
-      int cf = 0;
+      int cf = 1;
       String fileCut = "decoupes.xml";
       String[] xmlFile = new String[2];
       String[] users = new String[2];
@@ -33,7 +35,7 @@ public class test {
               System.out.println("");
               
               
-              if((w.isPrice(w.price)) && (w.isDimension(d)) && (w.isId(w.id)) && (w.isNumber(w.nombre)))
+              if((w.isPrice(w.price)) && (w.isDimension(d)) && (w.isId(w.id)) && (w.isNumber(w.nombre) && w.isDate(w.date)))
               {
                 System.out.println(" CHECK OK");
                 System.out.println("");
@@ -54,6 +56,11 @@ public class test {
                if(w.isNumber(w.nombre)== false)
               {
                 System.out.println("NOMBRE INVALID !");
+                System.out.println("");
+              }
+              if(w.isDate(w.date) == false)
+              {
+                System.out.println("DATE INVALID !");
                 System.out.println("");
               }
             }

@@ -1,4 +1,8 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.lang.String;
+import java.text.Format;
 public  class Wood  implements Validate
 {
   int id;
@@ -30,7 +34,16 @@ public  class Wood  implements Validate
    @Override
   public  boolean isDate(String date)
   {
-      return true;
+      SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+      Date d = new Date();
+      String t = sdf.format(d);
+      if(t.compareTo(date) == 0)
+      {
+          return true;
+      }
+      else{
+        return false;
+      }
   }
   @Override
   public boolean isDimension(Dimension dim)

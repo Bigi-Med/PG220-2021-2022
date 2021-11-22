@@ -14,5 +14,21 @@ public class Cut{
         this.positionX = positionX;
         this.positionY = positionY;
     }
+    // @Override
+    // public boolean isId(int id)
+    // {
+    //     if(id >=0)
+    //     {
+    //         return true;
+    //     }
+    //     else{
+    //         return false;
+    //     }
+    // }
+    // @Override
+    // public boolean isPos(double x,double y)
+    // {
+
+    // }
     
 }
