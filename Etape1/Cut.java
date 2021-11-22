@@ -58,6 +58,18 @@ public class Cut implements Validate
     {
         return true;
     }
+    @Override
+    public boolean isCovering(Cut planche1,Cut planche2)
+    {
+        if( (planche1.positionX < planche2.positionX) && (planche1.positionY< planche2.positionY)  ){
+            return true;   
+        }
+        else{
+            return false;
+        }
+        
+    }
+
     
     
 
