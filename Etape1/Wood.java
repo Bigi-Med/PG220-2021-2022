@@ -107,5 +107,10 @@ public  class Wood  implements Validate
  {
      return true;
  }
+@Override
+public boolean isCovering(Cut planche1, Cut planche2) {
+    // TODO Auto-generated method stub
+    return false;
+}
 
 }

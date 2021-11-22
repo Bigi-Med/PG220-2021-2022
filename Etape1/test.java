@@ -77,11 +77,11 @@ public class test {
       listCut = XMLReader.readXMLcut(fileCut);
       System.out.println("========================================================Reading decoupe");
       System.out.println("");
-
+      int i = 0;
       for(Cut c : listCut)
        {
          System.out.println("Cut has client id " + c.idClient + " and planche id " + c.idPlanche + " fournisseurs id " + c.idSupplier + " panel id " + c.idPanel + " positions x " + c.positionX + " position y " + c.positionY);
-         if(c.isId(c.idClient) && c.isId(c.idPlanche) && c.isPos(c.positionX, c.positionY) && c.isId(c.idPlanche) && c.isId(c.idPanel))
+         if(c.isId(c.idClient) && c.isId(c.idPlanche) && c.isPos(c.positionX, c.positionY) && c.isId(c.idPlanche) && c.isId(c.idPanel) && c.isCovering(listCut.get(i),listCut.get(i+1)))
          {
            System.out.println("CHECK OK");
            System.out.println("");
@@ -111,6 +111,11 @@ public class test {
            System.out.println("Position invalid !");
            System.out.println("");
           }
+         if( c.isCovering(listCut.get(i),listCut.get(i+1)) == false)
+        {
+          System.out.println("Rectangle Covering invalid !");
+          System.out.println("");
+         }
          System.out.println("");
         }
 
