@@ -107,5 +107,24 @@ public  class Wood  implements Validate
  {
      return true;
  }
+    // @Override
+    // public Validate(Object obj)
+    // {
+    //     if(obj.id < 0)
+    //     {
+    //         return 1;
+    //     }
+    //     if(obj.price <0)
+    //     {
+    //         return 2;
+    //     }
+    //     if(obj.nombre <0)
+    //     {
+    //         return 3;
+    //     }
+
+        
+
+    // }
 
 }
