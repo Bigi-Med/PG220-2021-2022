@@ -60,6 +60,7 @@ public class generate
           }
           
             System.out.println("======================================================================== Creating svg files");
+           
              for(int i = 0; i<listPanels.size();i++)
              {
                FileWriter myWriter = new FileWriter(files[i]);
@@ -67,16 +68,20 @@ public class generate
                String widthPanel = Double.toString(listPanels.get(i).get(0).L);
                String widthPlank = Double.toString(listPlanks.get(i).get(0).L);
                String heightPlank = Double.toString(listPlanks.get(i).get(0).L);
+               String x = Double.toString(CutList.get(i).positionX);
+               String y = Double.toString(CutList.get(i).positionY);
+
                
                myWriter.write("    <svg width=\"200\"  height= \"200\"  >\n");
                myWriter.write("        <rect height= " + "\"" +heightPanel + "\"" + " width= " + "\"" +  widthPanel + "\"" + " style=\"fill:rgb(165,42,42);stroke-width:3;stroke:rgb(0,0,0)\"></rect>\n");//outer
-               myWriter.write("        <rect height= " + "\"" +heightPlank + "\"" + " width= " + "\"" +  widthPlank + "\"" + " style=\"fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)\"></rect>\n");//inner
+               myWriter.write("        <rect   x= " + "\"" + x + "\"" + " y= " + "\"" + y + "\"" + " height= " + "\"" +heightPlank + "\"" + " width= " + "\"" +  widthPlank + "\"" + " style=\"fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)\"></rect>\n");//inner
                myWriter.write("    </svg>\n");
                myWriter.close();
                System.out.println("Successfully wrote to the file : " + files[i]);
 
 
-            }
+            
+          }
             
             // myWriter.close();
             // System.out.println("Successfully wrote to the file.");
