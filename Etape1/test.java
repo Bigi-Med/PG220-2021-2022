@@ -5,8 +5,12 @@ import java.util.List;
 import java.util.Locale;
 
 public class test {
+      static List<? extends User> listUser = new ArrayList<>();
+      static List<Client> listClient = new ArrayList<>();
+      static List<Supplier> listSupplier = new ArrayList<>();
+      
     public static void main(String[] args) {// 0 : client / 1 : fournisseur
-      int cf = 1;
+      // int cf = 1;
       String fileCut = "decoupes.xml";
       String[] xmlFile = new String[2];
       String[] users = new String[2];
@@ -17,14 +21,28 @@ public class test {
       users[1] = "Supplier";
       woodTypes[0] = "planche";
       woodTypes[1] = "panel";
-      List<User> listUser;
+      // List<? extends User> listUser;
+      
       List<Cut> listCut;
-      listUser = XMLReader.readXml(xmlFile[cf]);
-      System.out.println("");
-      System.out.println("========================================================Reading user");
-      System.out.println("");
+      for(int cf = 0; cf<2;cf++)
+      {
+         XMLReader.check = 0;
+         listUser = XMLReader.readXml(xmlFile[cf],cf);
+         // if( cf == 0)
+         // {
+         //    listClient = listUser;
+         // }
+         // else if (cf == 1)
+         // {
+         //    listSupplier = listUser;
+         // }
+         System.out.println(listUser.size());
+         System.out.println("");
+         System.out.println("========================================================Reading " + users[cf]);
+         System.out.println("");
         for(User u : listUser)
-        {
+        {   
+           
           System.out.println(users[cf] + " with id  : " + u.id +" has : ");
           
           for(Wood w : u.listWood )
@@ -63,10 +81,14 @@ public class test {
               {
                 System.out.println("DATE INVALID !");
                 System.out.println("");
+               //  System.out.println("=====================================================================================");
               }
             }
           }
+          System.out.println("=====================================================================================");
+
         }
+      }
       listCut = XMLReader.readXMLcut(fileCut);
       System.out.println("========================================================Reading decoupe");
       System.out.println("");
@@ -111,8 +133,7 @@ public class test {
          }
          System.out.println("");
         }
-
-      
-        
+        generate.generate_cut(listClient,listSupplier,listCut);
+       
       }   
 }
