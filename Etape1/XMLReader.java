@@ -13,19 +13,18 @@ import java.lang.SuppressWarnings;
 
 public class XMLReader
 {
-  static int check = 0; 
+  static int check = 0;
   static boolean value;
 
   @SuppressWarnings("unchecked")
     static List<User> readXml(String filename ,int option)
     {
-      
         List listUser = new ArrayList<>();
       try
         {
             FileInputStream file = new FileInputStream(filename);
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(file);
-           
+
             while(reader.hasNext())
             {
               if(check < 3)
@@ -39,7 +38,6 @@ public class XMLReader
 
                     if(reader.getName().toString() == "client" || reader.getName().toString() == "fournisseur" )
                     {
-                       
                         User u = readUser(reader,option);
                         if(option == 0)
                         {
@@ -66,7 +64,7 @@ public class XMLReader
         {
             e.printStackTrace();
         }
-       
+
         return listUser;
     }
     static List<Cut> readXMLcut(String filename)
@@ -103,7 +101,7 @@ public class XMLReader
               }
               continue;
             }
-            
+
              if(reader.getName().toString() == "fournisseur")
             {
              try{
@@ -141,7 +139,7 @@ public class XMLReader
               Cut c = new Cut(idClient,idSupplier,planche,panneau,x,y);
               listCut.add(c);
             }
-           
+
           }
           else{
             continue;
@@ -156,13 +154,13 @@ public class XMLReader
         {
             e.printStackTrace();
         }
-      
+
         return listCut;
     }
     @SuppressWarnings("unchecked")
     static User readUser(XMLStreamReader reader,int option) throws XMLStreamException
     {
-        
+
         int id;
         try{
          id = Integer.parseInt(reader.getAttributeValue(0));
@@ -170,8 +168,8 @@ public class XMLReader
         catch(Exception e){
            id  = -69;
         }
-        
-        
+
+
           List listWood = new ArrayList<>();
         while(reader.hasNext())
         {
@@ -181,7 +179,6 @@ public class XMLReader
             }
             if(reader.getName().toString()=="planche" || reader.getName().toString() == "panneau")
             {
-              
               Wood w = readWoodType(reader,option);
               listWood.add(w);
               continue;
@@ -199,7 +196,7 @@ public class XMLReader
        {
           return new Client(id,listWood);
        }
-      else 
+      else
       {
           return new Supplier(id,listWood);
       }
@@ -259,7 +256,7 @@ public class XMLReader
         {
           return new Planche(id,nombre,date,price,listDimension);
         }
-        else 
+        else
         {
           return new Panel(id,nombre,date,price,listDimension);
         }
@@ -281,6 +278,6 @@ public class XMLReader
       catch(Exception e){
          l = -69;
       }
-      return new Dimension(L,l);
+      return new Dimension(l,L);
     }
 }
