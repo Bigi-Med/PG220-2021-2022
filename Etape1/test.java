@@ -5,8 +5,12 @@ import java.util.List;
 import java.util.Locale;
 
 public class test {
+      static List<? extends User> listUser = new ArrayList<>();
+      static List<Client> listClient = new ArrayList<>();
+      static List<Supplier> listSupplier = new ArrayList<>();
+      
     public static void main(String[] args) {// 0 : client / 1 : fournisseur
-      // int cf = 0;
+      // int cf = 1;
       String fileCut = "decoupes.xml";
       String[] xmlFile = new String[2];
       String[] users = new String[2];
@@ -17,31 +21,39 @@ public class test {
       users[1] = "Supplier";
       woodTypes[0] = "planche";
       woodTypes[1] = "panel";
-      List<User> listUser;
+      // List<? extends User> listUser;
+      
       List<Cut> listCut;
-      for(int cf = 0;cf<2;cf++)
+      for(int cf = 0; cf<2;cf++)
       {
-        XMLReader.check = 0;
-
-        listUser = XMLReader.readXml(xmlFile[cf]);
-        System.out.println("");
-        System.out.println("========================================================Reading " + users[cf]);
-        System.out.println("");
-        for(User c : listUser)
-        {
-          Client u = (Client)c;
+         XMLReader.check = 0;
+         listUser = XMLReader.readXml(xmlFile[cf],cf);
+         // if( cf == 0)
+         // {
+         //    listClient = listUser;
+         // }
+         // else if (cf == 1)
+         // {
+         //    listSupplier = listUser;
+         // }
+         System.out.println(listUser.size());
+         System.out.println("");
+         System.out.println("========================================================Reading " + users[cf]);
+         System.out.println("");
+        for(User u : listUser)
+        {   
+           
           System.out.println(users[cf] + " with id  : " + u.id +" has : ");
-
-          for(Wood p : u.listWood )
+          
+          for(Wood w : u.listWood )
           {
-            Planche w = (Planche)p;
             System.out.println(woodTypes[cf] + " with id : " + w.id + " and number : "+w.nombre + " with price : " +w.price + " with date : " + w.date + " with dimensions : ");
             for(Dimension d : w.listDim)
             {
               System.out.println(" width of : " + d.l + " and length of : " + d.L);
               System.out.println("");
-
-
+              
+              
               if((w.isPrice(w.price)) && (w.isDimension(d)) && (w.isId(w.id)) && (w.isNumber(w.nombre) && w.isDate("dd.MM.yy",w.date,Locale.ENGLISH)))
               {
                 System.out.println(" CHECK OK");
@@ -69,9 +81,12 @@ public class test {
               {
                 System.out.println("DATE INVALID !");
                 System.out.println("");
+               //  System.out.println("=====================================================================================");
               }
             }
           }
+          System.out.println("=====================================================================================");
+
         }
       }
       listCut = XMLReader.readXMLcut(fileCut);
@@ -118,8 +133,7 @@ public class test {
          }
          System.out.println("");
         }
-
-
-
-      }
+        generate.generate_cut(listClient,listSupplier,listCut);
+       
+      }   
 }

@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.lang.String;
 import java.text.Format;
 
-public  class Wood  implements Validate
+abstract public  class Wood  implements Validate
 {
   int id;
   int nombre;

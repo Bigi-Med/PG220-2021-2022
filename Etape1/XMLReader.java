@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Exception;
+import java.lang.SuppressWarnings;
 
 
 public class XMLReader
@@ -15,8 +16,10 @@ public class XMLReader
   static int check = 0;
   static boolean value;
 
-    static List<User> readXml(String filename )
+  @SuppressWarnings("unchecked")
+    static List<User> readXml(String filename ,int option)
     {
+
         List listUser = new ArrayList<>();
       try
         {
@@ -37,7 +40,17 @@ public class XMLReader
                     if(reader.getName().toString() == "client" || reader.getName().toString() == "fournisseur" )
                     {
 
-                        User u = readUser(reader);
+                        User u = readUser(reader,option);
+                        if(option == 0)
+                        {
+                          Client c = (Client) u;
+                          test.listClient.add(c);
+                        }
+                        else if(option == 1)
+                        {
+                          Supplier s = (Supplier) u;
+                          test.listSupplier.add(s);
+                        }
                         listUser.add(u);
                     }
 
@@ -146,7 +159,8 @@ public class XMLReader
 
         return listCut;
     }
-    static User readUser(XMLStreamReader reader) throws XMLStreamException
+    @SuppressWarnings("unchecked")
+    static User readUser(XMLStreamReader reader,int option) throws XMLStreamException
     {
 
         int id;
@@ -158,7 +172,7 @@ public class XMLReader
         }
 
 
-            List listWood = new ArrayList<>();
+          List listWood = new ArrayList<>();
         while(reader.hasNext())
         {
           if(reader.next() != XMLStreamConstants.START_ELEMENT )
@@ -168,13 +182,12 @@ public class XMLReader
             if(reader.getName().toString()=="planche" || reader.getName().toString() == "panneau")
             {
 
-              Wood w = readWoodType(reader);
-              Planche p = (Planche)w;
-              listWood.add(p);
+              Wood w = readWoodType(reader,option);
+              listWood.add(w);
               continue;
 
             }
-            else if (reader.getName().toString() == "client"){
+            else if (reader.getName().toString() == "client" || reader.getName().toString() == "fournisseur" ){
 
               break;
 
@@ -182,11 +195,18 @@ public class XMLReader
 
         }
 
-        // list<Planche> list = (list<Planche>)listWood;
-        return new Client(id,listWood);
+       if(option == 0)
+       {
+          return new Client(id,listWood);
+       }
+      else
+      {
+          return new Supplier(id,listWood);
+      }
+        // return new User(id,listWood);
     }
 
-    static Wood readWoodType(XMLStreamReader reader) throws XMLStreamException
+    static Wood readWoodType(XMLStreamReader reader, int option) throws XMLStreamException
     {
       int id;
       int nombre ;
@@ -235,8 +255,15 @@ public class XMLReader
       }
 
 
-
+        if(option == 0)
+        {
           return new Planche(id,nombre,date,price,listDimension);
+        }
+        else
+        {
+          return new Panel(id,nombre,date,price,listDimension);
+        }
+          // return new Wood(id,nombre,date,price,listDimension);
       }
     static Dimension readDimension(XMLStreamReader reader) throws XMLStreamException
     {
@@ -254,6 +281,6 @@ public class XMLReader
       catch(Exception e){
          l = -69;
       }
-      return new Dimension(L,l);
+      return new Dimension(l,L);
     }
 }

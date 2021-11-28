@@ -1,5 +1,5 @@
 import java.util.List;
-public class User 
+abstract public class User 
 {
     int id;
     List<? extends Wood> listWood;
@@ -8,5 +8,5 @@ public class User
         this.id = id;
         this.listWood = listWood;
     }
-
+    
 }
