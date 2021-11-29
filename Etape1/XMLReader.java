@@ -71,8 +71,8 @@ public class XMLReader
     {
       int idClient = 0;
       int idSupplier = 0;
-      int planche = 0;
-      int panneau = 0;
+      double planche = 0;
+      double panneau = 0;
       double x = 0;
       double y = 0;
       List<Cut> listCut = new ArrayList<>();
@@ -93,7 +93,7 @@ public class XMLReader
                 idClient = -69;
               }
               try{
-              planche = Integer.parseInt(reader.getAttributeValue(1));
+              planche = Double.parseDouble(reader.getAttributeValue(1));
               }
               catch(Exception e)
               {
@@ -112,7 +112,7 @@ public class XMLReader
                idSupplier = -69;
              }
              try{
-              panneau = Integer.parseInt(reader.getAttributeValue(1));
+              panneau = Double.parseDouble(reader.getAttributeValue(1));
              }
              catch(Exception e)
              {
