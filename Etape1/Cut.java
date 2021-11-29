@@ -3,11 +3,11 @@ public class Cut implements Validate
 {
     int idClient;
     int  idSupplier;
-    int idPlanche;
-    int idPanel;
+    double idPlanche;
+    double idPanel;
     double positionX;
     double positionY;
-    Cut(int idClient,int  idSupplier,int idPlanche,int idPanel ,double positionX,double positionY)
+    Cut(int idClient,int  idSupplier,double idPlanche,double idPanel ,double positionX,double positionY)
     {
         this.idClient = idClient;
         this.idSupplier = idSupplier;
@@ -17,9 +17,9 @@ public class Cut implements Validate
         this.positionY = positionY;
     }
     @Override
-    public boolean isId(int id)
+    public boolean isId(double id)
     {
-        if(id >=0)
+        if(id >=0.0)
         {
             return true;
         }

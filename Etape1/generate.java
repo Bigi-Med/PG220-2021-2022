@@ -18,7 +18,7 @@ public class generate
           // creating names for svg files
           for(int i = 0 ;i <cuts;i++)
           {
-            files[i] = "svg"+Integer.toString(i)+".svg";
+            files[i] = "decoupe_"+Integer.toString(i)+".svg";
           }
           
           // FileWriter myWriter = new FileWriter(files[1]);
@@ -32,7 +32,7 @@ public class generate
               {
                 for(Wood p : s.listWood)
                 {
-                  if(c.idPanel == p.id)
+                  if((int)c.idPanel == p.id)
                   {
                     listPanels.add(p.listDim);
                   }
@@ -50,7 +50,7 @@ public class generate
               {
                 for(Wood p : s.listWood)
                 {
-                  if(c.idPlanche == p.id)
+                  if((int)c.idPlanche == p.id)
                   {
                     listPlanks.add(p.listDim);
                   }
@@ -83,8 +83,7 @@ public class generate
             
           }
             
-            // myWriter.close();
-            // System.out.println("Successfully wrote to the file.");
+            
           } catch (IOException e) {
             System.out.println("An error occurred");
             e.printStackTrace();

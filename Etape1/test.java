@@ -11,7 +11,7 @@ public class test {
       
     public static void main(String[] args) {// 0 : client / 1 : fournisseur
       // int cf = 1;
-      String fileCut = "decoupes.xml";
+      String fileCut = "decoupes3.xml";
       String[] xmlFile = new String[2];
       String[] users = new String[2];
       String[] woodTypes = new String[2];
@@ -54,7 +54,7 @@ public class test {
               System.out.println("");
               
               
-              if((w.isPrice(w.price)) && (w.isDimension(d)) && (w.isId(w.id)) && (w.isNumber(w.nombre) && w.isDate("dd.MM.yy",w.date,Locale.ENGLISH)))
+              if((w.isPrice(w.price)) && (w.isDimension(d)) && (w.isId((double)w.id)) && (w.isNumber(w.nombre) && w.isDate("dd.MM.yy",w.date,Locale.ENGLISH)))
               {
                 System.out.println(" CHECK OK");
                 System.out.println("");
@@ -67,7 +67,7 @@ public class test {
                 System.out.println("DIMENSION INVALID !");
                 System.out.println("");
               }
-               if(w.isId(w.id)== false)
+               if(w.isId((double)w.id)== false)
               {
                 System.out.println("ID INVALID !");
                 System.out.println("");
@@ -96,27 +96,29 @@ public class test {
       for(Cut c : listCut)
        {
          System.out.println("Cut has client id " + c.idClient + " and planche id " + c.idPlanche + " fournisseurs id " + c.idSupplier + " panel id " + c.idPanel + " positions x " + c.positionX + " position y " + c.positionY);
-         if(c.isId(c.idClient) && c.isId(c.idPlanche) && c.isPos(c.positionX, c.positionY) && c.isId(c.idPlanche) && c.isId(c.idPanel) && c.isCovering(listCut.get(i),listCut.get(i+1)))
-         {
+         if(c.isId((double)c.idClient) && c.isId((double)c.idPlanche) && c.isPos(c.positionX, c.positionY) && c.isId((double)c.idPlanche) && c.isId((double)c.idPanel) && c.isCovering(listCut.get(i),listCut.get(i+1)))
+        // if(c.isId(c.idClient) &&  c.isPos(c.positionX, c.positionY)   && c.isCovering(listCut.get(i),listCut.get(i+1)))
+         
+        {
            System.out.println("CHECK OK");
            System.out.println("");
           }
-         if(c.isId(c.idClient) == false)
+         if(c.isId((double)c.idClient) == false)
          {
            System.out.println("client id invalid !");
            System.out.println("");
           }
-         if(c.isId(c.idSupplier) == false)
+         if(c.isId((double)c.idSupplier) == false)
          {
            System.out.println("supplier id invalid");
            System.out.println("");
           }
-         if(c.isId(c.idPlanche) == false)
+         if(c.isId((double)c.idPlanche) == false)
          {
            System.out.println("planche id invalid !");
            System.out.println("");
           }
-         if(c.isId(c.idPanel) == false)
+         if(c.isId((double)c.idPanel) == false)
          {
            System.out.println("panel id invalid !");
            System.out.println("");
