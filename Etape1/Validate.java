@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public interface Validate {
@@ -7,7 +9,7 @@ public interface Validate {
     boolean isId(int id);
     boolean isNumber(int number);
     boolean isPos(double x, double y);
-    public boolean isCovering(Cut planche1,Cut planche2);
+    String isCovering(Cut planche1,Cut planche2,List<Client> CLientList,List<Supplier> SupplierList);
 
 
 
