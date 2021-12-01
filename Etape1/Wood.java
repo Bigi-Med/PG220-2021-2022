@@ -171,9 +171,9 @@ abstract public  class Wood  implements Validate
      return true;
  }
 @Override
-public boolean isCovering(Cut planche1, Cut planche2) {
+public String isCovering(Cut découpe1,Cut découpe2,List<Client> CLientList,List<Supplier> SupplierList) {
     // TODO Auto-generated method stub
-    return false;
+    return "";
 }
 
 }

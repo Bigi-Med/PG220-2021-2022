@@ -96,7 +96,8 @@ public class test {
       for(Cut c : listCut)
        {
          System.out.println("Cut has client id " + c.idClient + " and planche id " + c.idPlanche + " fournisseurs id " + c.idSupplier + " panel id " + c.idPanel + " positions x " + c.positionX + " position y " + c.positionY);
-         if(c.isId((double)c.idClient) && c.isId((double)c.idPlanche) && c.isPos(c.positionX, c.positionY) && c.isId((double)c.idPlanche) && c.isId((double)c.idPanel) && c.isCovering(listCut.get(i),listCut.get(i+1)))
+         
+         if(c.isId((double)c.idClient) && c.isId((double)c.idPlanche) && c.isPos(c.positionX, c.positionY) && c.isId((double)c.idPlanche) && c.isCovering(listCut.get(i),listCut.get(i+1),listClient,listSupplier).compareTo("") != 0)
         // if(c.isId(c.idClient) &&  c.isPos(c.positionX, c.positionY)   && c.isCovering(listCut.get(i),listCut.get(i+1)))
          
         {
@@ -128,9 +129,10 @@ public class test {
            System.out.println("Position invalid !");
            System.out.println("");
           }
-         if( c.isCovering(listCut.get(i),listCut.get(i+1)) == false)
+         if( c.isCovering(listCut.get(i),listCut.get(i+1),listClient,listSupplier).compareTo("") != 0)
         {
-          System.out.println("Rectangle Covering invalid !");
+          System.out.println("Error with : planche id " + listCut.get(i).idPlanche + " and planche_id " + listCut.get(i+1).idPlanche +" in pannel_id "+c.idPanel);
+          System.out.println(c.isCovering(listCut.get(i),listCut.get(i+1),listClient,listSupplier));
           System.out.println("");
          }
          System.out.println("");
