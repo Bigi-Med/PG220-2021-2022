@@ -6,7 +6,7 @@
   </decoupe>
   <decoupe>
     <client id="1" planche="3" />
-    <fournisseur id="0" panneau="2" />
-    <position x="70.00" y="50.00" />
+    <fournisseur id="0" panneau="1" />
+    <position x="11.00" y="41.00" />
   </decoupe>
 </decoupes>
