@@ -21,46 +21,69 @@ import java.util.List;
 import java.lang.Exception;
 import java.lang.SuppressWarnings;
 
-public class Itest{
-  
-    public static void main(String[] args) {
-    
-      Iread xml = new XMLReader();
-        String file = "fournisseurs.xml";
-        xml.ReadFile(file);
-        // System.out.println(Iread.infos);
-        Ifactory cf = new SupplierFactory(); 
-        
-         cf.ConstructObj(Iread.infos);
-        // System.out.println("list is " + Cl);
-        // for(int i = 0;i<Cl.size();i++)
-        // {
-        //     System.out.println( "Client with id  : " + Cl.get(i).id +" has : ");
-        //     for(int j = 0;j<Cl.get(j).)
+ class Itest{
 
-        // }
+    public static void main(String[] args) {
+
+      Iread xml = new XMLReader();
+        String[] files = {"clients.xml","fournisseurs.xml"};
+        // String[] users = {"Client","Supplier"};
+        // List<Ifactory> fact = new ArrayList<>();
+
+        Ifactory Supp = new SupplierFactory();
+        Ifactory Client = new ClientFactory();
+
+        // fact.add(Client);
+        // fact.add(Supp);
+        xml.ReadFile(files[1]);
+
+
+
+        Supp.ConstructObj(Iread.infos);
+
          for(Supplier u : SupplierFactory.ListSupp)
-         {   
-           
-         
-            System.out.println( "Client with id  : " + u.id +" has : ");
+         {
+
+
+            System.out.println( "Supplier with id  : " + u.id +" has : ");
           for(Wood w : u.listWood )
           {
-            System.out.println("Planche with id : " + w.id + " and number : "+w.nombre + " with price : " +w.price + " with date : " + w.date + " with dimensions : ");
+            System.out.println("Panel with id : " + w.id + " and number : "+w.nombre + " with price : " +w.price + " with date : " + w.date + " with dimensions : ");
             for(Dimension d : w.listDim)
             {
               System.out.println(" width of : " + d.l + " and length of : " + d.L);
               System.out.println("");
-              
-              
-              
+
+
+
               }
             }
             System.out.println("=====================================================================================");
           }
-         
-        }
-        }
-        
-    
 
+          xml.ReadFile(files[0]);
+          Client.ConstructObj(Iread.infos);
+          
+
+          for(Client u : ClientFactory.ListClient)
+          {
+
+
+             System.out.println( "Client with id  : " + u.id +" has : ");
+           for(Wood w : u.listWood )
+           {
+             System.out.println("Plank with id : " + w.id + " and number : "+w.nombre + " with price : " +w.price + " with date : " + w.date + " with dimensions : ");
+             for(Dimension d : w.listDim)
+             {
+               System.out.println(" width of : " + d.l + " and length of : " + d.L);
+               System.out.println("");
+
+
+
+               }
+             }
+             System.out.println("=====================================================================================");
+           }
+
+        }
+        }
