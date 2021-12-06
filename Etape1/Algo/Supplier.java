@@ -1,3 +1,5 @@
+package Algo;
+import Readwrite.*;
 import java.util.List;
 
 public class Supplier extends User
@@ -5,7 +7,7 @@ public class Supplier extends User
     
     
    
-    Supplier(int id, List<Panel> listPanel)
+    public Supplier(int id, List<Panel> listPanel)
     {
         
         super(id, listPanel);

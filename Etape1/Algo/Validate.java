@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+package Algo;
+import Readwrite.*;
 import java.util.Locale;
 
 public interface Validate {
@@ -9,7 +9,7 @@ public interface Validate {
     boolean isId(double id);
     boolean isNumber(int number);
     boolean isPos(double x, double y);
-    String isCovering(Cut découpe1,Cut découpe2,List<Client> CLientList,List<Supplier> SupplierList);
+    public boolean isCovering(Cut planche1,Cut planche2);
     // String[] isValide(Object obj);
 
 

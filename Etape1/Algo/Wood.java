@@ -1,3 +1,5 @@
+package Algo;
+import Readwrite.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -171,9 +173,9 @@ abstract public  class Wood  implements Validate
      return true;
  }
 @Override
-public String isCovering(Cut découpe1,Cut découpe2,List<Client> CLientList,List<Supplier> SupplierList) {
+public boolean isCovering(Cut planche1, Cut planche2) {
     // TODO Auto-generated method stub
-    return "";
+    return false;
 }
 
 }

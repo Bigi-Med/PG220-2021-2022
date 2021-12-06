@@ -1,5 +1,7 @@
+package Algo;
+import Readwrite.*;
 import java.util.List;
-abstract public class User 
+abstract  class User 
 {
     int id;
     List<? extends Wood> listWood;
