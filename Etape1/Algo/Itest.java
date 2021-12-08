@@ -36,6 +36,8 @@ import java.util.Locale;
 
         Ifactory Supp = new SupplierFactory();
         Ifactory Client = new ClientFactory();
+        Ifactory Cut = new CutsFactory();
+
 
         
         xml.ReadFile(files[1]);
@@ -167,6 +169,15 @@ import java.util.Locale;
            GenerateCuts G = new GenerateCuts();
            G.GeneratingCuts( ClientFactory.ListClient,SupplierFactory.ListSupp);
            xmlWrite.WriteFile(G.Cutting);
+           Iread.infos.clear();
+           xml.ReadFile("decoupes.xml");
+           System.out.println("cuts are : " + Iread.infos);
+           Cut.ConstructObj(Iread.infos);
+      //      for(Cut c : CutsFactory.ListCut)
+      //  {
+      //    System.out.println("Cut has client id " + c.idClient + " and planche id " + c.idPlanche + " fournisseurs id " + c.idSupplier + " panel id " + c.idPanel + " positions x " + c.positionX + " position y " + c.positionY);
+      //  }
+      generate.generate_cut(ClientFactory.ListClient,SupplierFactory.ListSupp,CutsFactory.ListCut);
 
             
         }
