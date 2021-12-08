@@ -12,7 +12,9 @@ import Algo.Dimension;
 import Algo.Ifactory;
 import Algo.Planche;
 import Readwrite.Iread;
+import Readwrite.Iwrite;
 import Readwrite.XMLReader;
+import Readwrite.XMLWriter;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,14 +30,14 @@ import java.util.Locale;
 
       Iread xml = new XMLReader();
         String[] files = {"clients.xml","fournisseurs.xml"};
-        // String[] users = {"Client","Supplier"};
-        // List<Ifactory> fact = new ArrayList<>();
+       Iwrite xmlWrite = new XMLWriter();
+       
+       
 
         Ifactory Supp = new SupplierFactory();
         Ifactory Client = new ClientFactory();
 
-        // fact.add(Client);
-        // fact.add(Supp);
+        
         xml.ReadFile(files[1]);
 
 
@@ -47,8 +49,9 @@ import java.util.Locale;
 
 
           System.out.println( "Supplier with id  : " + u.id +" has : ");
-          for(Wood w : u.listWood )
+          for(Wood p : u.listWood )
           {
+            Panel w = (Panel)p;
             System.out.println("============PANEL===============");
             System.out.println("");
             System.out.println("Panel with id : " + w.id + " and number : "+w.nombre + " with price : " +w.price + " with date : " + w.date + " with dimensions : ");
@@ -107,8 +110,9 @@ import java.util.Locale;
 
 
              System.out.println( "Client with id  : " + u.id +" has : ");
-           for(Wood w : u.listWood )
+           for(Wood p : u.listWood )
            {
+             Planche w = (Planche)p;
              System.out.println("============PLANK===========");
              System.out.println("");
 
@@ -158,36 +162,13 @@ import java.util.Locale;
              }
              System.out.println("=====================================================================================");
              System.out.println("");
-
+            
            }
+           GenerateCuts G = new GenerateCuts();
+           G.GeneratingCuts( ClientFactory.ListClient,SupplierFactory.ListSupp);
+           xmlWrite.WriteFile(G.Cutting);
 
+            
         }
         }
-        // if((w.isPrice(w.price)) && (w.isDimension(d)) && (w.isId((double)w.id)) && (w.isNumber(w.nombre) && w.isDate("dd.MM.yy",w.date,Locale.ENGLISH)))
-        //       {
-        //         System.out.println(" CHECK OK");
-        //         System.out.println("");
-        //       }
-        //        if (w.isPrice(w.price) == false){
-        //         System.out.println("PRICE INVALID !");
-        //         System.out.println("");
-        //       }
-        //        if(w.isDimension(d) == false){
-        //         System.out.println("DIMENSION INVALID !");
-        //         System.out.println("");
-        //       }
-        //        if(w.isId((double)w.id)== false)
-        //       {
-        //         System.out.println("ID INVALID !");
-        //         System.out.println("");
-        //       }
-        //        if(w.isNumber(w.nombre)== false)
-        //       {
-        //         System.out.println("NOMBRE INVALID !");
-        //         System.out.println("");
-        //       }
-        //       if(w.isDate("dd.MM.yy",w.date,Locale.ENGLISH) == false)
-        //       {
-        //         System.out.println("DATE INVALID !");
-        //         System.out.println("");
-        //        //
+        

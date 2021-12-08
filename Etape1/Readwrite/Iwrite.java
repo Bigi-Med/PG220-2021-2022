@@ -16,6 +16,6 @@ import java.lang.SuppressWarnings;
 
 public interface Iwrite {
    List<String> infos = new ArrayList<>();
-   void WriteFile();
+   void WriteFile(List<String> Cuts);
    
 }
