@@ -1,5 +1,6 @@
 package Algo;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ListCellRenderer;
@@ -167,7 +168,9 @@ import java.util.Locale;
             
            }
            GenerateCuts G = new GenerateCuts();
+           GenerateCuts31 G31 = new GenerateCuts31();
            G.GeneratingCuts( ClientFactory.ListClient,SupplierFactory.ListSupp);
+           G31.GeneratingCuts31(ClientFactory.ListClient,SupplierFactory.ListSupp);
            xmlWrite.WriteFile(G.Cutting);
            Iread.infos.clear();
            xml.ReadFile("decoupes.xml");

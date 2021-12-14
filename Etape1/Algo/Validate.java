@@ -1,5 +1,6 @@
 package Algo;
 import Readwrite.*;
+
 import java.util.Locale;
 
 public interface Validate {

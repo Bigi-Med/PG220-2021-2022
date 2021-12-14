@@ -30,6 +30,8 @@ class GenerateCuts{
                 {   
                     Planks.add(Integer.toString(c.id));
                     Planks.add(Integer.toString(p.id));
+                    Planks.add(Double.toString(p.listDim.get(0).l));
+                    Planks.add(Double.toString(p.listDim.get(0).L));
                     if( i != p.nombre -1)
                         Planks.add("m");
 
@@ -51,6 +53,8 @@ class GenerateCuts{
                 {
                     Panels.add(Integer.toString(s.id));
                     Panels.add(Integer.toString(p.id));
+                    Panels.add(Double.toString(p.listDim.get(0).l));
+                    Panels.add(Double.toString(p.listDim.get(0).L));
                     if(i != p.nombre -1)
                         Panels.add("m");
                 }
@@ -69,11 +73,23 @@ class GenerateCuts{
         int numberf = 1;
         int sizec = Planks.size();
         int sizef = Panels.size();
+        double current_l = 0;
+        double current_L =0;
 
+        // System.out.println("Panles ARE : " + Panels);
+        // System.out.println("PLANKS ARE : " + Planks);
+        System.out.println("");
+        // Sorting1 ss = new Sorting1();
+        // List<String> test = new ArrayList<>();
+        // test =  ss.Sorting(Planks);
+        // System.out.println("FINALE IS :" + test);
+        // System.out.println("planks size is : " +Planks.size());
+        // System.out.println("final size is : " +test.size());
 
 
         while(value)
         {
+            // indexf = -1;
             while(indexc<sizec)
             {   
                 indexc++;
@@ -83,6 +99,8 @@ class GenerateCuts{
                     Cutting.add("Client");
                     Cutting.add(Planks.get(indexc+1));
                     Cutting.add(Planks.get(indexc+2) + "." + Integer.toString(numberc));
+                    // current_l = Double.parseDouble(Planks.get(indexc+3));
+                    // current_L = Double.parseDouble(Planks.get(indexc+4));
                     numberc++;
                     break;
                 }
@@ -110,11 +128,17 @@ class GenerateCuts{
                     break;
                 if(Panels.get(indexf) == "m") 
                 {
+                    // if (Double.parseDouble(Panels.get(indexf+3)) >= current_l && Double.parseDouble(Panels.get(indexf+4)) >= current_L)
+                    // {
                     Cutting.add("Supplier");
-                    Cutting.add(Panels.get(indexf +1));
-                    Cutting.add(Panels.get(indexf + 2) + "." + Integer.toString(numberf));
-                    numberf++;
-                    break;
+
+                        Cutting.add(Panels.get(indexf +1));
+                        Cutting.add(Panels.get(indexf + 2) + "." + Integer.toString(numberf));
+                        numberf++;
+                        Panels.set(indexf, "used")  ;
+                        break;
+                    // }
+                    // continue;
                 }
                 else if(Panels.get(indexf) == "n"){
                     numberf = 1;
@@ -136,9 +160,8 @@ class GenerateCuts{
             }
         }
         
-        System.out.println("planks are : "+Planks);
-        System.out.println("Cuts are : " + Panels);
-        System.out.println("Cuts are : " + Cutting);
+    // System.out.println("CUTS ARE : " + Cutting);
+      
     }
     
 }
