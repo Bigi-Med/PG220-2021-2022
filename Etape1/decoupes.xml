@@ -1,12 +1,1 @@
-<decoupes>
-  <decoupe>
-    <client id="1" planche="2" />
-    <fournisseur id="0" panneau="1" />
-    <position x="10.00" y="40.00" />
-  </decoupe>
-  <decoupe>
-    <client id="1" planche="3" />
-    <fournisseur id="0" panneau="1" />
-    <position x="11.00" y="41.00" />
-  </decoupe>
-</decoupes>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><decoupes><decoupe><client id="0" planche="0.1"/><fournisseur id="0" panneau="0.1"/><position x="0" y="0"/></decoupe><decoupe><client id="0" planche="1.1"/><fournisseur id="0" panneau="0.2"/><position x="0" y="0"/></decoupe><decoupe><client id="0" planche="1.2"/><fournisseur id="0" panneau="0.3"/><position x="0" y="0"/></decoupe><decoupe><client id="1" planche="-1.1"/><fournisseur id="0" panneau="0.4"/><position x="0" y="0"/></decoupe><decoupe><client id="1" planche="-1.2"/><fournisseur id="0" panneau="1.1"/><position x="0" y="0"/></decoupe><decoupe><client id="2" planche="0.1"/><fournisseur id="0" panneau="1.2"/><position x="0" y="0"/></decoupe><decoupe><client id="2" planche="0.2"/><fournisseur id="0" panneau="2.1"/><position x="0" y="0"/></decoupe><decoupe><client id="2" planche="0.3"/><fournisseur id="1" panneau="0.1"/><position x="0" y="0"/></decoupe><decoupe><client id="2" planche="0.4"/><fournisseur id="1" panneau="0.2"/><position x="0" y="0"/></decoupe><decoupe><client id="3" planche="0.1"/><fournisseur id="1" panneau="1.1"/><position x="0" y="0"/></decoupe></decoupes>

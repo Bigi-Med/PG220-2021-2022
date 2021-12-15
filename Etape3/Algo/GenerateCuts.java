@@ -30,8 +30,8 @@ class GenerateCuts{
                 {   
                     Planks.add(Integer.toString(c.id));
                     Planks.add(Integer.toString(p.id));
-                    Planks.add(Double.toString(p.listDim.get(0).l));
                     Planks.add(Double.toString(p.listDim.get(0).L));
+                    Planks.add(Double.toString(p.listDim.get(0).l));
                     if( i != p.nombre -1)
                         Planks.add("m");
 
@@ -53,8 +53,8 @@ class GenerateCuts{
                 {
                     Panels.add(Integer.toString(s.id));
                     Panels.add(Integer.toString(p.id));
-                    Panels.add(Double.toString(p.listDim.get(0).l));
                     Panels.add(Double.toString(p.listDim.get(0).L));
+                    Panels.add(Double.toString(p.listDim.get(0).l));
                     if(i != p.nombre -1)
                         Panels.add("m");
                 }
