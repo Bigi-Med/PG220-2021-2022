@@ -170,19 +170,20 @@ import java.util.Locale;
            GenerateCuts G = new GenerateCuts();
            GenerateCuts31 G31 = new GenerateCuts31();
           //  G.GeneratingCuts( ClientFactory.ListClient,SupplierFactory.ListSupp);
-           G31.GeneratingCuts31(ClientFactory.ListClient,SupplierFactory.ListSupp);
-           System.out.println("G.cutting  " + G.Cutting);
-           xmlWrite.WriteFile(G31.Cutting);
-           
+          //  G31.GeneratingCuts31(ClientFactory.ListClient,SupplierFactory.ListSupp);
+          //  System.out.println("G.cutting  " + G.Cutting);
+          //  xmlWrite.WriteFile(G31.Cutting);
+        G31.GenerateCuts32(ClientFactory.ListClient, SupplierFactory.ListSupp);
+        xmlWrite.WriteFile(G31.Cutting);
            Iread.infos.clear();
            xml.ReadFile("decoupes.xml");
-           System.out.println("cuts are : " + Iread.infos);
+          //  System.out.println("cuts are : " + Iread.infos);
            Cut.ConstructObj(Iread.infos);
       //      for(Cut c : CutsFactory.ListCut)
       //  {
       //    System.out.println("Cut has client id " + c.idClient + " and planche id " + c.idPlanche + " fournisseurs id " + c.idSupplier + " panel id " + c.idPanel + " positions x " + c.positionX + " position y " + c.positionY);
       //  }
-      System.out.println("list cu tis :" + CutsFactory.ListCut);
+      // System.out.println("list cu tis :" + CutsFactory.ListCut);
       generate.generate_cut(ClientFactory.ListClient,SupplierFactory.ListSupp,CutsFactory.ListCut);
 
             
