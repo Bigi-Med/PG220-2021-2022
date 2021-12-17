@@ -22,7 +22,6 @@ class Sorting1
         List<String> finale = new ArrayList<>();
         int index = 0 ;
         int index2 = 0;
-        // finale.add("client");
         int first = 0;
        
 
@@ -55,7 +54,6 @@ class Sorting1
                         max_L = c1.get(0);
                         max_l = c1.get(1);
                         
-                        // System.out.println("new is 1"+ PanlestoSort);
                         c1.clear();
                         c2.clear();
                         if(old_l != max_l && old_L != max_L)
@@ -63,7 +61,6 @@ class Sorting1
                             max_index = i+add;
                             old_l = max_l;
                             old_L = max_L;
-                            // System.out.println("changed 1 ");
                         }
                         
                     }
@@ -71,15 +68,11 @@ class Sorting1
                     {
                         max_L = c2.get(0);
                         max_l = c2.get(1);
-                        // PanlestoSort.set(i+add+4,"-1");
-                        // PanlestoSort.set(i+add+5,"-1");
-                        // System.out.println("new is 2"+ PanlestoSort);
 
                         c2.clear();
                         c1.clear();
                         if(old_l != max_l && old_L != max_L)
                         {
-                            // System.out.println("changed 2 ");
 
                             max_index = i+add;
                             old_l = max_l;
@@ -120,19 +113,16 @@ class Sorting1
                 }
                 else if(PanlestoSort.get(index) == "n")
                 {
-                    // System.out.println("in second");
                     finale.add("client"); 
                     
                     while(PanlestoSort.get(index2+1) != "n")
                     {
-                        // System.out.println("infinite");
                         finale.add(PanlestoSort.get(index2+1));
                         index2++;
                         if(PanlestoSort.get(index2) == "n")
                         {
                             finale.add("n");
                         }
-                        // index++;
                     }
                 }
                 // firtstest++;
@@ -148,13 +138,9 @@ class Sorting1
             
            
           
-            // System.out.println("max_l is :" + max_l);
-            // System.out.println("max_L is :" + max_L);
-            // System.out.println("max index is :" + max_index );
 
             PanlestoSort.set(max_index+4,"-1");
             PanlestoSort.set(max_index+5,"-1");
-            // System.out.println("finale is :" +finale);
             
             max_l = "-1";
             max_L = "-1";
@@ -179,7 +165,6 @@ class Sorting1
         List<String> finale = new ArrayList<>();
         int index = 0 ;
         int index2 = 0;
-        // finale.add("client");
         int first = 0;
        
 
@@ -212,7 +197,6 @@ class Sorting1
                         max_L = c1.get(1);
                         max_l = c1.get(0);
                         
-                        // System.out.println("new is 1"+ PanlestoSort);
                         c1.clear();
                         c2.clear();
                         if(old_l != max_l && old_L != max_L)
@@ -220,7 +204,6 @@ class Sorting1
                             max_index = i+add;
                             old_l = max_l;
                             old_L = max_L;
-                            // System.out.println("changed 1 ");
                         }
                         
                     }
@@ -228,15 +211,12 @@ class Sorting1
                     {
                         max_L = c2.get(1);
                         max_l = c2.get(0);
-                        // PanlestoSort.set(i+add+4,"-1");
-                        // PanlestoSort.set(i+add+5,"-1");
-                        // System.out.println("new is 2"+ PanlestoSort);
+                        
 
                         c2.clear();
                         c1.clear();
                         if(old_l != max_l && old_L != max_L)
                         {
-                            // System.out.println("changed 2 ");
 
                             max_index = i+add;
                             old_l = max_l;
@@ -277,22 +257,18 @@ class Sorting1
                 }
                 else if(PanlestoSort.get(index) == "n")
                 {
-                    // System.out.println("in second");
                     finale.add("client"); 
                     
                     while(PanlestoSort.get(index2+1) != "n")
                     {
-                        // System.out.println("infinite");
                         finale.add(PanlestoSort.get(index2+1));
                         index2++;
                         if(PanlestoSort.get(index2) == "n")
                         {
                             finale.add("n");
                         }
-                        // index++;
                     }
                 }
-                // firtstest++;
                 if(finale.size() == PanlestoSort.size()-1 )
                  {  
                     value = false;
@@ -305,13 +281,9 @@ class Sorting1
             
            
           
-            // System.out.println("max_l is :" + max_l);
-            // System.out.println("max_L is :" + max_L);
-            // System.out.println("max index is :" + max_index );
-
+         
             PanlestoSort.set(max_index+4,"-1");
             PanlestoSort.set(max_index+5,"-1");
-            // System.out.println("finale is :" +finale);
             
             max_l = "-1";
             max_L = "-1";

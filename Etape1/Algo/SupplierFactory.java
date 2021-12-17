@@ -20,25 +20,21 @@ import java.lang.Exception;
 import java.lang.SuppressWarnings;
 
 class SupplierFactory implements Ifactory{
-    // int index =0;
     static List<Supplier> ListSupp = new ArrayList<>();
 
    
 
     @Override
-    public void ConstructObj(List<String> ListAtt)
+     public void ConstructObj(List<String> ListAtt)
     {
         
         int size = ListAtt.size();
-        // System.out.println(ListAtt);
        
 
         for(int index = 0;index<size;index ++)
         {
             if(ListAtt.get(index) == "fournisseur")
             {
-                // System.out.println("in client");
-                // System.out.println("idex is : " + index);
                 Supplier c = ConstructSupp(index,size,ListAtt);//index containes the index of the current element
                 ListSupp.add(c);
 
@@ -47,19 +43,7 @@ class SupplierFactory implements Ifactory{
                 continue;
             }
         }
-        // for(String s :ListAtt)
-        // {
-        //     if(s = "client")
-        //     {
-        //         Client c = readClient(index);//index containes the index of the current element
-
-
-        //     }
-        //     else{
-        //         index++;
-        //     }
-        // }
-        
+       
     }
 
     private Supplier ConstructSupp(int index2,int size,List<String> ListAtt)
@@ -84,7 +68,6 @@ class SupplierFactory implements Ifactory{
              }
             if(ListAtt.get(index) == "panneau")
             {
-            //    System.out.println("in planche ");
                 Panel p = ConstructPanel(index,size,ListAtt);
                 listPanel.add(p);
                 
@@ -133,7 +116,6 @@ class SupplierFactory implements Ifactory{
             price = -99.00;
         }
 
-        // System.out.println("index 3 is : " + index3);
         
         
         for(int index = index3;index<size;index++)

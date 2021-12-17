@@ -23,7 +23,7 @@ class CutsFactory implements Ifactory
 {
     static List<Cut> ListCut = new ArrayList<>();
     @Override
-    public void ConstructObj(List<String> ListAtt)
+     public void ConstructObj(List<String> ListAtt)
 
     {
         
@@ -40,6 +40,5 @@ class CutsFactory implements Ifactory
           
         
   
-        //   System.out.println("my list : "+ ListCut);
       }
 }

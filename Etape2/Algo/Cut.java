@@ -1,7 +1,7 @@
 package Algo;
 import Readwrite.*;
 import java.util.Locale;
-public class Cut implements Validate
+ class Cut implements Validate
 {
     int idClient;
     int  idSupplier;
@@ -9,7 +9,7 @@ public class Cut implements Validate
     double idPanel;
     double positionX;
     double positionY;
-    public Cut(int idClient,int  idSupplier,double idPlanche,double idPanel ,double positionX,double positionY)
+ Cut(int idClient,int  idSupplier,double idPlanche,double idPanel ,double positionX,double positionY)
     {
         this.idClient = idClient;
         this.idSupplier = idSupplier;

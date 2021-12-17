@@ -11,7 +11,6 @@ public interface Validate {
     boolean isNumber(int number);
     boolean isPos(double x, double y);
     public boolean isCovering(Cut planche1,Cut planche2);
-    // String[] isValide(Object obj);
 
 
 

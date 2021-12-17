@@ -19,24 +19,19 @@ import java.lang.Exception;
 import java.lang.SuppressWarnings;
 
 class ClientFactory implements Ifactory{
-    // int index =0;
     static List<Client> ListClient = new ArrayList<>();
    
 
     @Override
     public void ConstructObj(List<String> ListAtt)
     {
-        // List<Client> ListClient = new ArrayList<>();
         int size = ListAtt.size();
-        // System.out.println(ListAtt);
        
 
         for(int index = 0;index<size;index ++)
         {
             if(ListAtt.get(index) == "client")
             {
-                // System.out.println("in client");
-                // System.out.println("idex is : " + index);
                 Client c = ConstructClient(index,size,ListAtt);//index containes the index of the current element
                 ListClient.add(c);
 
@@ -45,18 +40,7 @@ class ClientFactory implements Ifactory{
                 continue;
             }
         }
-        // for(String s :ListAtt)
-        // {
-        //     if(s = "client")
-        //     {
-        //         Client c = readClient(index);//index containes the index of the current element
-
-
-        //     }
-        //     else{
-        //         index++;
-        //     }
-        // }
+        
 
     }
 
@@ -64,7 +48,6 @@ class ClientFactory implements Ifactory{
     {
         int id;
         List<Planche> listPlanche = new ArrayList<>();
-        // System.out.println("index2 is : " + index2);
         
         try{
             id = Integer.parseInt(ListAtt.get(index2+1));
@@ -82,7 +65,6 @@ class ClientFactory implements Ifactory{
              }
             if(ListAtt.get(index) == "planche")
             {
-            //    System.out.println("in planche ");
                 Planche p = ConstructPlanche(index,size,ListAtt);
                 listPlanche.add(p);
                 

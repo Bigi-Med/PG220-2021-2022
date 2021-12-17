@@ -8,7 +8,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-
+import java.awt.Color;
 import Algo.Dimension;
 import Algo.Ifactory;
 import Algo.Planche;
@@ -16,13 +16,13 @@ import Readwrite.Iread;
 import Readwrite.Iwrite;
 import Readwrite.XMLReader;
 import Readwrite.XMLWriter;
-
+import javax.swing.*;
+import java.awt.event.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Exception;
-import java.lang.SuppressWarnings;
 import java.util.Locale;
 
  class Itest{
@@ -30,22 +30,16 @@ import java.util.Locale;
     public static void main(String[] args) {
 
       Iread xml = new XMLReader();
-        String[] files = {"clients.xml","fournisseurs.xml"};
-       Iwrite xmlWrite = new XMLWriter();
+      String[] files = {"clients.xml","fournisseurs.xml"};
+      Iwrite xmlWrite = new XMLWriter();
        
-       
-
-        Ifactory Supp = new SupplierFactory();
-        Ifactory Client = new ClientFactory();
-        Ifactory Cut = new CutsFactory();
-
-
-        
-        xml.ReadFile(files[1]);
-
-
-
-        Supp.ConstructObj(Iread.infos);
+      Ifactory Supp = new SupplierFactory();
+      Ifactory Client = new ClientFactory();
+      Ifactory Cut = new CutsFactory();
+      
+      xml.ReadFile(files[1]);
+      
+      Supp.ConstructObj(Iread.infos);
 
          for(Supplier u : SupplierFactory.ListSupp)
          {
@@ -167,24 +161,42 @@ import java.util.Locale;
              System.out.println("");
             
            }
+          //  Generating cuts 
            GenerateCuts G = new GenerateCuts();
-           GenerateCuts31 G31 = new GenerateCuts31();
+
+
+
            G.GeneratingCuts( ClientFactory.ListClient,SupplierFactory.ListSupp);
-           G31.GeneratingCuts31(ClientFactory.ListClient,SupplierFactory.ListSupp);
-           System.out.println("G.cutting  " + G.Cutting);
-           xmlWrite.WriteFile(G.Cutting);
-           
+          
+           xmlWrite.WriteFile(G.Cutting);//writing cuts to XML
            Iread.infos.clear();
-           xml.ReadFile("decoupes.xml");
-           System.out.println("cuts are : " + Iread.infos);
-           Cut.ConstructObj(Iread.infos);
-      //      for(Cut c : CutsFactory.ListCut)
-      //  {
-      //    System.out.println("Cut has client id " + c.idClient + " and planche id " + c.idPlanche + " fournisseurs id " + c.idSupplier + " panel id " + c.idPanel + " positions x " + c.positionX + " position y " + c.positionY);
-      //  }
-      generate.generate_cut(ClientFactory.ListClient,SupplierFactory.ListSupp,CutsFactory.ListCut);
+           xml.ReadFile("decoupes.xml");//Reading cut xml file
+           Cut.ConstructObj(Iread.infos);//Constructing Cut objects
+
+
+           JFrame frame = new JFrame("SVG GENERATOR");
+          //  final JTextArea textArea = new JTextArea();
+          //  textArea.setBounds(50, 50, 180, 20);
+           frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+           frame.setSize(800, 800);
+           JButton button = new JButton("Generate SVG files");
+           button.setBackground(Color.RED);
+           button.setForeground(Color.GREEN);
+           button.setBounds(200, 200, 400, 400);
+           button.addActionListener(new ActionListener(){
+             public void actionPerformed(ActionEvent e){
+                //  textArea.setText("Done");
+           Generate.Generate_cut(ClientFactory.ListClient,SupplierFactory.ListSupp,CutsFactory.ListCut);//Generating svgs
+
+             }
+           });
+           frame.add(button);
+          //  frame.add(textArea);
+           frame.setLayout(null);
+           frame.setVisible(true);
+          
 
             
         }
-        }
+}
         

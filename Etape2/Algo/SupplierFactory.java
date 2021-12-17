@@ -30,15 +30,12 @@ class SupplierFactory implements Ifactory{
     {
         
         int size = ListAtt.size();
-        // System.out.println(ListAtt);
        
 
         for(int index = 0;index<size;index ++)
         {
             if(ListAtt.get(index) == "fournisseur")
             {
-                // System.out.println("in client");
-                // System.out.println("idex is : " + index);
                 Supplier c = ConstructSupp(index,size,ListAtt);//index containes the index of the current element
                 ListSupp.add(c);
 
@@ -47,18 +44,7 @@ class SupplierFactory implements Ifactory{
                 continue;
             }
         }
-        // for(String s :ListAtt)
-        // {
-        //     if(s = "client")
-        //     {
-        //         Client c = readClient(index);//index containes the index of the current element
-
-
-        //     }
-        //     else{
-        //         index++;
-        //     }
-        // }
+        
         
     }
 
@@ -66,7 +52,6 @@ class SupplierFactory implements Ifactory{
     {
         int id;
         List<Panel> listPanel = new ArrayList<>();
-        // System.out.println("index2 is : " + index2);
         
         try{
             id = Integer.parseInt(ListAtt.get(index2+1));
@@ -84,7 +69,6 @@ class SupplierFactory implements Ifactory{
              }
             if(ListAtt.get(index) == "panneau")
             {
-            //    System.out.println("in planche ");
                 Panel p = ConstructPanel(index,size,ListAtt);
                 listPanel.add(p);
                 
@@ -133,7 +117,6 @@ class SupplierFactory implements Ifactory{
             price = -99.00;
         }
 
-        // System.out.println("index 3 is : " + index3);
         
         
         for(int index = index3;index<size;index++)
@@ -141,7 +124,6 @@ class SupplierFactory implements Ifactory{
         
             if(ListAtt.get(index) == "dim")
              {
-                //  System.out.println("equals dim");
                  Dimension d = ConstructDim(index,size,ListAtt);
                  ListDim.add(d);
                  break;

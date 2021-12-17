@@ -3,7 +3,7 @@ import Readwrite.*;
 
 import java.util.Locale;
 
-public interface Validate {
+ interface Validate {
     boolean isPrice(double price);
     boolean isDate(String format, String value, Locale locale);
     boolean isDimension(Dimension dim);

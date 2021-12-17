@@ -25,8 +25,6 @@ class GenerateCuts31
         Sorting1 sort = new Sorting1();
         List<String> Listcorg = new ArrayList<>();
         Listcorg = sort.Sorting(Planks);
-        // System.out.println("finale is : "+Listcorg);
-        // System.out.println("Panels are is : "+Panels);
         
 
         // creating cuts
@@ -57,12 +55,10 @@ class GenerateCuts31
                     {
                         current_L = Double.parseDouble(Listcorg.get(indexc+3));
                         current_l = Double.parseDouble(Listcorg.get(indexc+4));
-                        System.out.println("current_L is "+ current_L);
                     
                          
                         if(Double.parseDouble(Panels.get(indexf+3)) >=  current_L && Double.parseDouble(Panels.get(indexf+4)) >=  current_l )
                         {
-                            // System.out.println("in cond for  Panel : L  and plank : L  " + Double.parseDouble(Panels.get(indexf+3)));
                             Cutting.add("client");
                             Cutting.add(Listcorg.get(indexc+1));//adding client id
                             Cutting.add(Listcorg.get(indexc+2) + "." + Integer.toString(numberc));//plank id with number
@@ -101,7 +97,6 @@ class GenerateCuts31
             posy = 0; //new Panel, Planks start at (0,0)
             
         }
-        // System.out.println("Cutes31  are " + Cutting);
         
                 
     }
@@ -116,7 +111,6 @@ class GenerateCuts31
         Sorting1 sort = new Sorting1();
         List<String> Listcorg = new ArrayList<>();
         Listcorg = sort.Sorting2(Planks);
-        System.out.println("SECOND LIST ORG IS  : " + Listcorg);
 
         int indexc = 0;
         int indexf  = 0;
@@ -153,14 +147,9 @@ class GenerateCuts31
                     {
                         current_L = Double.parseDouble(Listcorg.get(indexc+3));
                         current_l = Double.parseDouble(Listcorg.get(indexc+4));
-                        System.out.println("current_L is "+ current_L);
-                        System.out.println("current_l is "+ current_l);
 
                         
-                        // if(current_L > max_L)
-                        // {
-                        //     max_L = current_L;
-                    // }
+                       
                          if(current_L < min_L)
                         {
                             min_L = current_L;
@@ -206,7 +195,6 @@ class GenerateCuts31
                             Panels.set(indexf+3,Double.toString(new_L) );
                             posy = max_L;
                             posx = 0;
-                            System.out.println("[POS Y IS ] : " + posy);
                             if(new_L <= min_L)
                             {
                                 indexc = sizec-1;
@@ -230,7 +218,6 @@ class GenerateCuts31
             min_L = 999;
             
         }
-                System.out.println("Cutes31  are  : " + Cutting);
 
 
     }

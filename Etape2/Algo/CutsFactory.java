@@ -37,9 +37,5 @@ class CutsFactory implements Ifactory
             }
         }
        
-          
-        
-  
-        //   System.out.println("my list : "+ ListCut);
-      }
+    }
 }
